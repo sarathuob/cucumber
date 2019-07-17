@@ -28,17 +28,17 @@ import org.junit.*;;
 public class VerifyVendorBill {
 	
 	
-	By title = By.xpath("//span[@class='is-visuallyHidden']");
-	By input_box = By.xpath("//input[@name='postcode']");
-	By search_button = By.xpath("//button[@data-test-id='find-restaurants-button']");
-	By header_title = By.xpath("//h1[@class='c-contentHeader-title']");
-	By sub_title = By.xpath("//span[@class='c-contentHeader-subTitle']");
-	By all_rest_titles = By.xpath("//h3[@class='c-exp-listing-item-title']");
-	By main_header_in_hotel_page = By.xpath("//h1[@class='name']");
-	By help_button = By.xpath("//li[@class=\"supportLink\"]/a");
-	By help_page_title = By.xpath("//div[@class='c-order-customisation--login']/h1");
-	By login_button = By.xpath("//div[@class='actions-container']/a");
-	By other_question_button = By.xpath("//a[@data-ft='other-questions-link']");
+	By email_text = By.xpath("");
+	By password_text_box = By.xpath("");
+	By login_button = By.xpath("");
+	By entripy_logo_first_page = By.xpath("");
+	By sign_in_label = By.xpath("");
+	By next_button = By.xpath("");
+	By enter_password_label = By.xpath("");
+	By sign_in_button = By.xpath("");
+	By vendor_billing_job_title = By.xpath("");
+	By other_question_button = By.xpath("");
+	
 	java.util.List<WebElement> titles = new ArrayList<>();
 	public static WebDriver driver;
 	
@@ -75,6 +75,21 @@ public class VerifyVendorBill {
 	
 	@Given("^log in page is loaded$")
 	public void log_in_page_is_loaded() throws Throwable {
+		
+		//get the title into  string variable to verify
+		if(driver.findElement(entripy_logo_first_page).isDisplayed())
+		{
+		String entripy_title = driver.findElement(entripy_logo_first_page).getText();
+			if(entripy_title.equals(""))
+			{
+				
+			}
+		}
+		else
+		{
+			
+		}
+			
 	    
 	}
 
