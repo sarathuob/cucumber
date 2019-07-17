@@ -1,7 +1,11 @@
 package CucumberFramework.stepfiles;
 
+import java.awt.List;
+import java.util.ArrayList;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import CucumberFramework.driverClass.BroswerDriverFactory;
 import cucumber.api.java.en.Then;
@@ -66,23 +70,94 @@ public class new_vendor_file_upload extends BroswerDriverFactory{
 	@When("^uploaded data from the file is displayed as table data$")
 	public void uploaded_data_from_the_file_is_displayed_as_table_data() throws Throwable {
 		
-		
+		//code to verify if the data is displayed in table 
 	    
 	}
 
 	@Then("^verify all invoice numbers format$")
 	public void verify_all_invoice_numbers_format() throws Throwable {
-	    
-	}
+		
+		java.util.List<WebElement> invoices_from_table = new ArrayList<>();
+		
+		//verify if invoice are contain only alpha numeric characters
+		
+		invoices_from_table = driver.findElements(invoice_table_column_values);
+		
+		
+		   boolean alpha_num = isAlphaNumeric(invoices_from_table);
+		   
+		   if(alpha_num)
+			   System.out.println("oly alpha numeric");
+		   else
+			   System.out.println("not alpha numeric");
+			
+			
+		}
+		
 
 	@Then("^verify PO numbers contains only alpha numeric numbers$")
 	public void verify_PO_numbers_contains_only_alpha_numeric_numbers() throws Throwable {
 	    
+		java.util.List<WebElement> po_boxes = new ArrayList<>();
+		
+		//verify if invoice are contain only alpha numeric characters
+		
+		po_boxes = driver.findElements(PO_table_column_values);
+		
+		
+		   boolean alpha_num = isAlphaNumeric(po_boxes);
+		   
+		   if(alpha_num)
+			   System.out.println("only alpha numeric");
+		   else
+			   System.out.println("not alpha numeric");
 	}
 
 	@Then("^verify invoice amount only have positive numbers$")
 	public void verify_invoice_amount_only_have_positive_numbers() throws Throwable {
+		
+		java.util.List<WebElement> invoices = new ArrayList<>();
+		
+		//verify if invoice are contain only alpha numeric characters
+		
+		invoices = driver.findElements(PO_table_column_values);
+		
+		
+		   boolean num = isNumber(invoices);
+		   
+		   if(num)
+			   System.out.println("only numbers");
+		   else
+			   System.out.println("only numbers");
 	    
 	}
 
+	
+
+
+	// alpha numeric check function to return true or false 
+	public static boolean isAlphaNumeric(java.util.List<WebElement> numbers) {
+		
+		
+		
+		for (WebElement var : numbers) 
+		{ 
+			if(!var.getText().matches("^[a-zA-Z0-9]*$"))
+				  return false;
+		}
+		return true;
+	}
+	
+	private boolean isNumber(java.util.List<WebElement> numbers) {
+
+		for (WebElement var : numbers) 
+		{ 
+			if(!var.getText().matches("^\\d+$"))
+				  return false;
+		}
+		return true;
+		
+		
+	}
+	
 }
