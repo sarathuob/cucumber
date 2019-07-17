@@ -1,9 +1,10 @@
- Feature: Use the website to find restaurants
-            So that I can order food
-            As a hungry customer
-            I want to be able to find restaurants in my area   
+ Feature: Log into account
+ 		USer should be able to log into account and import vendor bills to the ERP system 
+ 		and verify the uploaded information    
+ 
+ 
  @first            
- Scenario: Search for restaurants in an area
+ Scenario: Log into the account and verify login
  Given I want food in "AR51 1AA"
  When I search for restaurants
  Then I should see some restaurants in "AR51 1AA"
