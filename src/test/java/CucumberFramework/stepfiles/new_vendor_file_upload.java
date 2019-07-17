@@ -1,21 +1,36 @@
 package CucumberFramework.stepfiles;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
+import CucumberFramework.driverClass.BroswerDriverFactory;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class new_vendor_file_upload {
+public class new_vendor_file_upload extends BroswerDriverFactory{
 	
+	WebDriver driver = createDriver();
+	
+	public new_vendor_file_upload(String browser) {
+		super(browser);
+		// TODO Auto-generated constructor stub
+	}
+
 	By vendor_files_label = By.xpath("");
 	By vendor_file_txt_box = By.xpath("");
 	By upload_button = By.xpath("");
 	By save_button = By.xpath("");
+	By invoice_table_column_values = By.xpath("");
+	By PO_table_column_values = By.xpath("");
+	By total_table_column_values = By.xpath("");
+	By ignore_table_column_values = By.xpath("");
 	
 	@When("^user is on the create new vendor billing job$")
 	public void user_is_on_the_create_new_vendor_billing_job() throws Throwable {
 		
 		//user verification of vendor new page
+		
+		
 	   
 	}
 
@@ -23,23 +38,35 @@ public class new_vendor_file_upload {
 	public void vendor_name_text_box_and_vendor_file_upload_text_box_is_displayed() throws Throwable {
 		
 		//use send keys to send the location of the file to upload using text box, 
-		
+		if(driver.findElement(vendor_file_txt_box).isDisplayed())
+			System.out.println("text box is displayed");
+		else
+			System.out.println("text box not displayed");
 		
 	   
 	}
 
 	@Then("^user select the file to upload$")
 	public void user_select_the_file_to_upload() throws Throwable {
+		
+		driver.findElement(vendor_file_txt_box).sendKeys("path to the file ");
 	    
 	}
 
 	@Then("^user click the upload button$")
 	public void user_click_the_upload_button() throws Throwable {
+		
+		if(driver.findElement(upload_button).isDisplayed())
+		driver.findElement(upload_button).click();
+		else
+			System.out.println("upload button not present");
 	   
 	}
 
 	@When("^uploaded data from the file is displayed as table data$")
 	public void uploaded_data_from_the_file_is_displayed_as_table_data() throws Throwable {
+		
+		
 	    
 	}
 

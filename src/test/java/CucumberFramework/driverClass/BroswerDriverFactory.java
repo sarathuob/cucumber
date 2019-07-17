@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class BroswerDriverFactory {
 	
-	private ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+	protected static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 	private String browser;
 	
 	
@@ -19,6 +19,9 @@ public class BroswerDriverFactory {
 	{
 		System.out.println("create driver "+ browser);
 		
+		
+		if(driver == null)
+		{
 		switch(browser)
 		{
 		case "chrome":
@@ -36,6 +39,7 @@ public class BroswerDriverFactory {
 			System.setProperty("webdriver.chrome.driver", "C:\\Driver\\chromedriver\\chromedriver.exe");
 			driver.set(new ChromeDriver());
 			break;
+		}
 		}
 		
 		return driver.get();

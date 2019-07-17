@@ -28,9 +28,17 @@ import org.apache.logging.log4j.core.config.LoggerConfig;
 import org.junit.*;;
 
 
-public class VerifyVendorBill {
+public class VerifyVendorBill extends BroswerDriverFactory{
 	
-	
+
+	public VerifyVendorBill(String browser) {
+		super(browser);
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+
 	By email_text = By.xpath("");
 	By password_text_box = By.xpath("");
 	By login_button = By.xpath("");
@@ -42,15 +50,11 @@ public class VerifyVendorBill {
 	By vendor_billing_job_title = By.xpath("");
 	By other_question_button = By.xpath("");
 	By new_vendor_billing_page_title = By.xpath("");
-	By invoice_table_column_values = By.xpath("");
-	By PO_table_column_values = By.xpath("");
-	By total_table_column_values = By.xpath("");
-	By ignore_table_column_values = By.xpath("");
 	
 	By new_vendor_billing_button = By.xpath("");
 	
 	java.util.List<WebElement> titles = new ArrayList<>();
-	public static WebDriver driver;
+	static WebDriver driver;
 	static Properties prop = new Properties();
 	
 	@Before("@first")
