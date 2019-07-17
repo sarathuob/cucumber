@@ -41,6 +41,13 @@ public class VerifyVendorBill {
 	By sign_in_button = By.xpath("");
 	By vendor_billing_job_title = By.xpath("");
 	By other_question_button = By.xpath("");
+	By new_vendor_billing_page_title = By.xpath("");
+	By invoice_table_column_values = By.xpath("");
+	By PO_table_column_values = By.xpath("");
+	By total_table_column_values = By.xpath("");
+	By ignore_table_column_values = By.xpath("");
+	
+	By new_vendor_billing_button = By.xpath("");
 	
 	java.util.List<WebElement> titles = new ArrayList<>();
 	public static WebDriver driver;
@@ -160,79 +167,60 @@ public class VerifyVendorBill {
 	@Given("^Vendor billing page is displayed$")
 	public void vendor_billing_page_is_displayed() throws Throwable {
 		
-		
+		//check all the properties of vendor billing page to make sure it is displayed correctly and all the properties are there
 	   
 	}
 
 	@Then("^verify the title and tabs in the vendor billing page$")
 	public void verify_the_title_and_tabs_in_the_vendor_billing_page() throws Throwable {
+		
+		//verify all the titles and tabs at the left side properties
 	   
 	}
 
 	@Then("^verify the table with past import jobs$")
 	public void verify_the_table_with_past_import_jobs() throws Throwable {
+		
+		//verify all the previous import statements
 	   
 	}
 
 	@When("^user is on the vendor billing page$")
 	public void user_is_on_the_vendor_billing_page() throws Throwable {
+		
+		
 	   
 	}
 
 	@Given("^create new vendor billing job button is present$")
 	public void create_new_vendor_billing_job_button_is_present() throws Throwable {
+		
+		if(driver.findElement(new_vendor_billing_button).isDisplayed())
+		{
+			System.out.println();
+		}
+		else
+		{
+			System.out.println();
+		}
 	   
 	}
 
 	@Then("^click the create new vendor billing job button$")
 	public void click_the_create_new_vendor_billing_job_button() throws Throwable {
+		
+		driver.findElement(new_vendor_billing_button).click();
 	   
 	}
 
 	@Then("^user redirect to the create new vendor billing job page$")
 	public void user_redirect_to_the_create_new_vendor_billing_job_page() throws Throwable {
+		
+		// code to verify the new vendor billing page by verifying the title etc
 	   
 	}
 
-	@When("^user is on the create new vendor billing job$")
-	public void user_is_on_the_create_new_vendor_billing_job() throws Throwable {
-	   
-	}
-
-	@When("^Vendor name text box and vendor file upload text box is displayed$")
-	public void vendor_name_text_box_and_vendor_file_upload_text_box_is_displayed() throws Throwable {
-	   
-	}
-
-	@Then("^user select the file to upload$")
-	public void user_select_the_file_to_upload() throws Throwable {
-	    
-	}
-
-	@Then("^user click the upload button$")
-	public void user_click_the_upload_button() throws Throwable {
-	   
-	}
-
-	@When("^uploaded data from the file is displayed as table data$")
-	public void uploaded_data_from_the_file_is_displayed_as_table_data() throws Throwable {
-	    
-	}
-
-	@Then("^verify all invoice numbers format$")
-	public void verify_all_invoice_numbers_format() throws Throwable {
-	    
-	}
-
-	@Then("^verify PO numbers contains only alpha numeric numbers$")
-	public void verify_PO_numbers_contains_only_alpha_numeric_numbers() throws Throwable {
-	    
-	}
-
-	@Then("^verify invoice amount only have positive numbers$")
-	public void verify_invoice_amount_only_have_positive_numbers() throws Throwable {
-	    
-	}
+	
 	
 	
 	@After("@third")
