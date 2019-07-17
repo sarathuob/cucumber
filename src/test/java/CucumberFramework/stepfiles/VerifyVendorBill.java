@@ -22,6 +22,9 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+
+import org.apache.log4j.Logger;
+import org.apache.logging.log4j.core.config.LoggerConfig;
 import org.junit.*;;
 
 
@@ -41,7 +44,7 @@ public class VerifyVendorBill {
 	
 	java.util.List<WebElement> titles = new ArrayList<>();
 	public static WebDriver driver;
-	
+	static Properties prop = new Properties();
 	
 	@Before("@first")
 	public static void initializeDriver(){
@@ -54,7 +57,7 @@ public class VerifyVendorBill {
 			e.printStackTrace();
 		}
 
-            Properties prop = new Properties();
+           // Properties prop = new Properties();
             try {
 				prop.load(input);
 			} catch (IOException e) {
@@ -82,12 +85,12 @@ public class VerifyVendorBill {
 		String entripy_title = driver.findElement(entripy_logo_first_page).getText();
 			if(entripy_title.equals(""))
 			{
-				
+				System.out.println("title is displayed as expected");  // we can use log 4j for loggin instead of sysout 
 			}
 		}
 		else
 		{
-			
+			System.out.println("title is not displayed as expected");
 		}
 			
 	    
@@ -95,26 +98,69 @@ public class VerifyVendorBill {
 
 	@When("^Log in button is present$")
 	public void log_in_button_is_present() throws Throwable {
+		//click the log in button
+		
+		if(driver.findElement(login_button).isDisplayed())
+		driver.findElement(login_button).click();
+		
+		else
+			System.out.println("element not found");
+		
 	    
 	}
 
 	@Then("^goto enter email address page$")
 	public void goto_enter_email_address_page() throws Throwable {
+		
+		if(driver.findElement(email_text).isDisplayed())
+		{
+		driver.findElement(email_text).sendKeys(prop.getProperty("browser"));
+		driver.findElement(next_button).click();
+		}
+		else
+		{
+			System.out.println("text field not displayed");
+		}
 	    
 	}
 
 	@Then("^goto enter password field$")
 	public void goto_enter_password_field() throws Throwable {
+		
+		if(driver.findElement(enter_password_label).isDisplayed())
+		{
+			System.out.println("on enter password page");
+			if(driver.findElement(password_text_box).isDisplayed())
+			{
+				driver.findElement(password_text_box).sendKeys(prop.getProperty("password"));
+			}
+		}
+		{
+			System.out.println("not in log in page");
+		}
+		
 	   
 	}
 
 	@Then("^click sign in button$")
 	public void click_sign_in_button() throws Throwable {
+		
+		if(driver.findElement(sign_in_button).isDisplayed())
+		{
+			driver.findElement(sign_in_button).click();
+		}
+		else
+		{
+			System.out.println("sign in page is not displayed");
+		}
+			
 	   
 	}
 
 	@Given("^Vendor billing page is displayed$")
 	public void vendor_billing_page_is_displayed() throws Throwable {
+		
+		
 	   
 	}
 
